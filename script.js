@@ -1,5 +1,7 @@
 let latitude = 0 //create variable for latitude
 let longitude = 0 //create variable for latitude
+//915ece8a2a57e9341116d7f79f739833
+
 
 window.onload = function() { // window loads whole pagecan set a variable to a function, anonymous function -> doen't need to be called 
     const date = new Date();
@@ -33,18 +35,18 @@ btn.addEventListener("click", () => {
   
    const body = JSON.parse(xhr.responseText)//What’s wrong w/ this (Think about the format responseText is in and what format we need it in (stringify/parse)
 
-   let temperature = body.temperature
+   let temp = body.temp
    let weatherStatus = body.weatherStatus
-   document.getElementById("temperature").innerHTML = `Temperature: ${temperature}°F`; //setting html variables to variables that we get
+   document.getElementById("temperature").innerHTML = `Temperature: ${temp}°F`; //setting html variables to variables that we get
    document.getElementById("weatherStatus").innerHTML = `Weather Status: ${weatherStatus}`;
    let city = 'Santa Cruz';
-   let finalString = `In ${city} it is ${temperature}`;
+   let finalString = `In ${city} it is ${temp}`;
 
    finalString = xhr.open(`http://localhost:3000/weather/${latitude}/${longitude}`)
   }
   //----------------FORECAST fiveday forecast data (xhr2)-------------------------------------------------
   const xhr2 = new XMLHttpRequest();
-  xhr2.open("GET", `http://localhost:3000/weather/${lat}/${lon}`);
+  xhr2.open("GET", `http://localhost:3000/5day/${lat}/${lon}`);
   xhr2.send();
   xhr2.onload = function() {
 	const body = JSON.parse(xhr.responseText);
